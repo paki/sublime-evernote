@@ -358,7 +358,7 @@ class OpenEvernoteNoteCommand(EvernoteDoWindow):
                     tags = [noteStore.getTag(self.token(), guid).name for guid in (note.tagGuids or [])]
                     meta = "---\n"
                     meta += "title: %s\n" % (note.title or "Untitled")
-                    meta += "tags: %s\n" % (json.dumps(tags))
+                    meta += "tags: %s\n" % (json.dumps(tags, ensure_ascii=False))
                     meta += "notebook: %s\n" % notebooks[notebook].name
                     meta += "---\n\n"
                     builtin = note.content.find(SUBLIME_EVERNOTE_COMMENT_BEG, 0, 150)
